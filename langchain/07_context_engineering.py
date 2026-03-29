@@ -9,8 +9,8 @@ from langchain.agents.middleware import (
     ModelRequest,
     ModelResponse,
 )
-from langchain.chat_models import init_chat_model
 from langchain.tools import tool, ToolRuntime
+from langchain_openai import ChatOpenAI
 from langgraph.store.memory import InMemoryStore
 
 from settings import settings
@@ -35,17 +35,18 @@ https://docs.langchain.com/oss/python/langchain/context-engineering
 -------------------------------------------------------
 """
 
-model = init_chat_model(f"openai:{settings.OPENAI_MODEL_NAME}")
+# --- 1. Create the model ---
+model = ChatOpenAI(model=settings.OPENAI_MODEL_NAME)
 
 
-# --- 1. Define context schema ---
+# --- 2. Define context schema ---
 @dataclass
 class AppContext:
     user_id: str
     user_role: str  # "admin" or "viewer"
 
 
-# --- 2. Create a store with user preferences ---
+# --- 3. Create a store with user preferences ---
 store = InMemoryStore()
 store.put(
     ("preferences",),
@@ -59,7 +60,7 @@ store.put(
 )
 
 
-# --- 3. Dynamic prompt from store (user preferences) ---
+# --- 4. Dynamic prompt from store (user preferences) ---
 @dynamic_prompt
 def personalized_prompt(request: ModelRequest) -> str:
     user_id = request.runtime.context.user_id
@@ -77,7 +78,7 @@ def personalized_prompt(request: ModelRequest) -> str:
     return base
 
 
-# --- 4. Dynamic tool filtering based on role ---
+# --- 5. Dynamic tool filtering based on role ---
 @tool
 def read_data(query: str) -> str:
     """Read data from the system."""
@@ -123,7 +124,7 @@ def filter_tools_by_role(
     return handler(request)
 
 
-# --- 5. Message injection: add context about recent activity ---
+# --- 6. Message injection: add context about recent activity ---
 @wrap_model_call
 def inject_activity_context(
     request: ModelRequest,
@@ -150,7 +151,7 @@ def inject_activity_context(
     return handler(request)
 
 
-# --- 6. Create the agent with all context engineering layers ---
+# --- 7. Create the agent with all context engineering layers ---
 agent = create_agent(
     model=model,
     tools=[read_data, write_data, delete_data],
@@ -159,7 +160,7 @@ agent = create_agent(
     store=store,
 )
 
-# --- 7. Test with admin user ---
+# --- 8. Test with admin user ---
 print("=== Admin User ===")
 result = agent.invoke(
     {
@@ -174,7 +175,7 @@ result = agent.invoke(
 )
 print(f"Response: {result['messages'][-1].content}\n")
 
-# --- 8. Test with viewer user (should only have read access) ---
+# --- 9. Test with viewer user (should only have read access) ---
 print("=== Viewer User ===")
 result = agent.invoke(
     {"messages": [{"role": "user", "content": "Show me the revenue data."}]},
