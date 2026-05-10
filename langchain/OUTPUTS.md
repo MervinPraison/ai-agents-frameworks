@@ -1,6 +1,6 @@
 # LangChain Examples — Output Log
 
-All 19 examples executed successfully with `gpt-4o-mini` on 2026-03-29.
+All 20 examples executed successfully with `gpt-4o-mini` on 2026-05-10.
 
 > Outputs are non-deterministic — your results will vary slightly on each run.
 
@@ -360,3 +360,14 @@ Traced response: Order ORD-001 is for a Wireless Mouse, which was delivered on J
 
 Untraced response: Order ORD-003 is for a Mechanical Keyboard and is currently in processing.
 ```
+
+---
+
+## 19_dynamic_tool_registration.py
+
+```
+=== Dynamic Tool Registration ===
+Response: The weather in Lisbon is sunny, 25°C. A 20% tip on an $85 bill is $17.00, making the total $102.00.
+```
+
+> The middleware dynamically injected `calculate_tip` at runtime — it was not registered when the agent was created. Both the base tool (`get_weather`) and the dynamic tool executed successfully.

@@ -67,3 +67,4 @@ uv run python 00_hello_world.py
 | 16 | `16_multi_agent_router.py` | Router pattern with `StateGraph`, `Send` fan-out |
 | 17 | `17_multi_agent_skills.py` | Skills pattern with progressive skill disclosure |
 | 18 | `18_observability.py` | LangSmith tracing, metadata, selective tracing |
+| 19 | `19_dynamic_tool_registration.py` | Dynamic tool injection via middleware |
