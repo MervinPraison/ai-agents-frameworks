@@ -1,6 +1,6 @@
 # AG2 Example Outputs
 
-Captured outputs from running all 12 examples against ag2 v0.11.5 with `gpt-4o-mini`.
+Captured outputs from running all 16 examples against ag2 v0.12.3 with `gpt-4o-mini`.
 
 > These outputs may vary between runs due to LLM non-determinism. The structure and tool invocations should remain consistent.
 
@@ -648,3 +648,105 @@ French:   Bonjour, comment ça va aujourd'hui ?
 
 === A2A Demo Complete ===
 ```
+
+---
+
+## 12_beta_agent.py
+
+```
+=== Beta Agent: Simple Question ===
+
+Response: The phrase "Hello, World!" is widely known as a simple program used to
+illustrate the basic syntax of a programming language. Its origins can be traced back
+to the 1972 Bell Laboratories' "The C Programming Language" book by Brian Kernighan
+and Dennis Ritchie.
+
+=== Beta Agent: Second Question ===
+
+Response: The capital of Portugal is Lisbon.
+
+=== Reply History ===
+  Events in history: 3
+  - ModelRequest
+  - ModelMessage
+  - ModelResponse
+```
+
+> The beta Agent uses async `ask()` and returns an `AgentReply` with `.body` for text
+> and `.history.get_events()` for the event stream.
+
+---
+
+## 13_beta_tools.py
+
+```
+=== Beta Agent: Tools ===
+
+Response: The current weather in Lisbon is sunny with a temperature of 25°C.
+The population of Lisbon is approximately 550,000 residents.
+
+=== Event History ===
+  ModelRequest
+  ModelResponse
+  ToolCallsEvent
+  ToolCallEvent
+  ToolCallEvent
+  ToolResultEvent
+  ToolResultEvent
+  ToolResultsEvent
+  ModelMessage
+  ModelResponse
+```
+
+> The event history shows the full tool-calling loop: initial LLM request, tool calls
+> dispatched and executed, results fed back, then final LLM response.
+
+---
+
+## 14_beta_observer.py
+
+```
+=== Beta Agent: Observer API ===
+
+Events as they happen:
+  [Observer] ModelRequest: LLM request sent
+  [Observer] ModelMessage: LLM message received
+  [Observer] ModelResponse: LLM response complete
+
+Response: The speed of light in a vacuum is approximately 299,792 kilometers per
+second (km/s), or about 186,282 miles per second (mi/s).
+
+=== Observer Summary ===
+Total events captured: 3
+  1. ModelRequest
+  2. ModelMessage
+  3. ModelResponse
+```
+
+> MemoryStream captures events in real time via `subscribe()`. The callback fires as
+> each event occurs during agent execution, enabling observability and custom UIs.
+
+---
+
+## 15_beta_structured_output.py
+
+```
+=== Beta Agent: Structured Output ===
+
+  City: Lisbon
+  Country: Portugal
+  Population: 547,733
+  Famous for: Historic architecture, vibrant nightlife, and cultural heritage
+  Best time to visit: March to May and September to October
+
+--- Second Query ---
+
+  City: Tokyo
+  Country: Japan
+  Population: 13.96 million
+  Famous for: Unique blend of tradition and modernity, cherry blossoms, and technology
+  Best time to visit: March to May, and September to November
+```
+
+> The beta Agent's `response_schema` constrains LLM output to match a Pydantic model,
+> guaranteeing parseable structured data.
