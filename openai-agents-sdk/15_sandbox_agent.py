@@ -1,22 +1,18 @@
 """
-# -----------------------------------------------------------------------
-# 15_sandbox_agent.py — Sandbox Agent (SandboxAgent + Manifest)
-# -----------------------------------------------------------------------
-# Demonstrates the SandboxAgent feature introduced in openai-agents 0.17.0:
-#   - Creating a SandboxAgent with a Manifest of workspace files
-#   - Using UnixLocalSandboxClient for local sandbox execution
-#   - Staging files into the sandbox workspace
-#   - Running the agent to analyse staged code
-#
-# Since gpt-4o-mini does not support the "custom" tool type required by
-# built-in Capabilities (shell, filesystem), we use a simple function
-# tool to simulate file reads.  With gpt-5.5+ models you would use
-# Capabilities.default() instead for real shell + filesystem access.
-#
-# Requirements:
-#   pip install "openai-agents[viz,voice]>=0.17.0"
-#   OPENAI_API_KEY in .env
-# -----------------------------------------------------------------------
+-------------------------------------------------------
+In this example, we explore OpenAI Agents SDK with the following features:
+- SandboxAgent with a Manifest of workspace files
+- Staging files into an isolated sandbox workspace
+- Running the agent to analyse staged code
+
+The SandboxAgent provides persistent isolated workspaces for code execution.
+A Manifest defines files to stage into the workspace. Since gpt-4o-mini does
+not support built-in Capabilities (shell, filesystem), we use a function tool
+to simulate file reads. With gpt-5.5+ use Capabilities.default() instead.
+
+For more details, visit:
+https://openai.github.io/openai-agents-python/sandbox_agents/
+-------------------------------------------------------
 """
 
 import asyncio

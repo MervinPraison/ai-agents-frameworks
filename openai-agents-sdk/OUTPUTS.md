@@ -443,32 +443,4 @@ and filesystem tools instead of custom function tools.
 > task instructions from a Manifest-staged `task.md`. With GPT-5.5+ models,
 > built-in Capabilities provide real shell and filesystem access instead.
 
----
 
-## 15. Sandbox Agent (`15_sandbox_agent.py`)
-
-```
-=== Sandbox Agent Example ===
-
-Running sandbox agent with UnixLocalSandboxClient...
-
-Agent response:
-The code in `hello.py` defines a function `greet` that returns a greeting
-message for a specified name. When the script is run directly, it prints
-"Hello, World!" by calling the `greet` function.
-
-### Function Names
-- `greet`
-
-SandboxAgent configuration:
-  Name: Code Reviewer
-  Model: gpt-4o-mini
-  Manifest entries: ['hello.py', 'task.md']
-  Tools: ['read_file']
-
-=== Sandbox Agent Demo Complete ===
-```
-
-> The SandboxAgent reads workspace files via a function tool and follows
-> task instructions from a Manifest-staged `task.md`. With GPT-5.5+ models,
-> built-in Capabilities provide real shell and filesystem access instead.
