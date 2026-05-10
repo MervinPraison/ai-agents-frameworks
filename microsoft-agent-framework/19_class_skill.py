@@ -25,7 +25,7 @@ for reference data and calls scripts to perform actions,
 keeping domain logic self-contained and testable.
 
 For more details, visit:
-https://github.com/microsoft/agent-framework/pull/5678
+https://learn.microsoft.com/en-us/agent-framework/agents/skills
 -------------------------------------------------------
 """
 
