@@ -74,7 +74,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
           <img src="res/agno.svg" alt="Agno" width="68" style="vertical-align: middle;">
         </picture>
       </td>
-      <td><code>2.5.17</code></td>
+      <td><code>2.6.5</code></td>
       <td>
           <a href="https://docs.agno.com/introduction">
             <picture>
@@ -131,7 +131,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
             <img src="res/claude-logo.svg" alt="Claude Agent SDK" width="30" style="vertical-align: middle;">
           </picture>
       <strong style="vertical-align: middle; font-size: 1.2em;">Claude Agent SDK</strong>
-      <td><code>0.1.52</code></td>
+      <td><code>0.1.80</code></td>
       <td>
           <a href="https://platform.claude.com/docs/en/agent-sdk/overview">
             <picture>
@@ -188,7 +188,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
         </picture>
     <strong style="vertical-align: middle; font-size: 1.2em;">Google ADK</strong>
       </td>
-      <td><code>1.31.0</code></td>
+      <td><code>1.33.0</code></td>
       <td>
           <a href="https://google.github.io/adk-docs/">
             <picture>
@@ -216,7 +216,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
           <img src="res/langchain.svg" alt="LangChain" width="120" style="vertical-align: middle;">
         </picture>
       </td>
-      <td><code>1.2.13</code></td>
+      <td><code>1.2.18</code></td>
       <td>
           <a href="https://docs.langchain.com/oss/python/langchain/">
             <picture>
@@ -340,7 +340,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
         </picture>
     <strong style="vertical-align: middle; font-size: 1.2em;">OpenAI Agents SDK</strong>
       </td>
-      <td><code>0.14.2</code></td>
+      <td><code>0.17.0</code></td>
       <td>
           <a href="https://openai.github.io/openai-agents-python/">
             <picture>
