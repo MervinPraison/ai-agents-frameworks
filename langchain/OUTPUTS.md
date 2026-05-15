@@ -371,3 +371,27 @@ Response: The weather in Lisbon is sunny, 25°C. A 20% tip on an $85 bill is $17
 ```
 
 > The middleware dynamically injected `calculate_tip` at runtime — it was not registered when the agent was created. Both the base tool (`get_weather`) and the dynamic tool executed successfully.
+
+## 20_stream_events_v3.py
+
+```
+=== v3 Event Streaming ===
+
+[Tool Start] get_weather({'city': 'Lisbon'})
+[Tool End]   get_weather -> Sunny, 26°C
+[Tool Start] get_population({'city': 'Lisbon'})
+[Tool End]   get_population -> 550,000
+The weather in Lisbon is sunny with a temperature of 26°C, and the population is approximately 550,000.
+
+=== Events Captured ===
+  message-start
+  message-finish
+  tool-started:get_weather
+  tool-finished:get_weather
+  tool-started:get_population
+  tool-finished:get_population
+  message-start
+  message-finish
+```
+
+> Demonstrates v3 event streaming — granular tool lifecycle events and token-by-token text streaming for real-time UIs.

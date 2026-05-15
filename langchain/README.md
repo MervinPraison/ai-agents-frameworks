@@ -68,3 +68,4 @@ uv run python 00_hello_world.py
 | 17 | `17_multi_agent_skills.py` | Skills pattern with progressive skill disclosure |
 | 18 | `18_observability.py` | LangSmith tracing, metadata, selective tracing |
 | 19 | `19_dynamic_tool_registration.py` | Dynamic tool injection via middleware |
+| 20 | `20_stream_events_v3.py` | v3 event streaming with tool-started/finished and text-delta events |
