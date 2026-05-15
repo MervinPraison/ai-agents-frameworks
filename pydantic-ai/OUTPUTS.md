@@ -644,3 +644,27 @@ Response: The sum of 100 and 200 is 300.
 ```
 
 > Shows `CombinedCapability` for bundling capabilities, `CapabilityOrdering` for controlling evaluation order, `output_retries` replacing deprecated `retries`, and `PrepareTools` for runtime tool filtering.
+
+## 23_tool_search.py
+
+```
+=== Tool Search: Deferred Loading ===
+
+Q: What's the weather in Lisbon?
+A: The weather in Lisbon is sunny with a temperature of 26°C.
+
+Q: Convert 100 USD to EUR
+A: 100 USD is equivalent to 92.00 EUR.
+
+Q: Calculate the tip on a $85 bill at 20%
+A: The tip on an $85 bill at 20% is $17.00.
+
+=== Tool Configuration ===
+  get_weather:      defer_loading=False (always visible)
+  convert_currency: defer_loading=True  (discovered via search)
+  translate_text:   defer_loading=True  (discovered via search)
+  calculate_tip:    defer_loading=True  (discovered via search)
+  get_time_zone:    defer_loading=True  (discovered via search)
+```
+
+> Demonstrates deferred tool loading — only `get_weather` is immediately visible to the model, while other tools are discovered via tool search when needed.

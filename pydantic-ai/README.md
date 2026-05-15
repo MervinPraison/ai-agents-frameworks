@@ -61,6 +61,7 @@ uv run python 00_hello_world.py
 | `20_agent_spec.py` | Agent Spec | Declarative agent definitions via YAML/JSON/dict with `AgentSpec` and `Agent.from_spec()` |
 | `21_tool_choice.py` | Tool Choice | Control tool calling behavior with `tool_choice` model setting (`auto`, `required`, `none`) |
 | `22_advanced_capabilities.py` | Advanced Capabilities | CombinedCapability, CapabilityOrdering, PrepareTools, and `output_retries` |
+| `23_tool_search.py` | Tool Search | Deferred tool loading with `defer_loading=True`, native provider tool search |
 
 ## Key dependencies
 
