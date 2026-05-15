@@ -512,3 +512,32 @@ Built-in backends: FileSessionManager, S3SessionManager
 ```
 
 > The second agent instance restores messages and state from the first, proving cross-instance persistence works.
+
+## 18_context_compression.py
+
+```
+=== Proactive Context Compression ===
+  compression_threshold: 0.7
+  summary_ratio: 0.3
+  preserve_recent_messages: 4
+
+=== Multi-Turn Conversation ===
+
+Q: What is the capital of Portugal?
+A: The capital of Portugal is Lisbon.
+
+Q: What is its population?
+A: As of 2021, the population of Lisbon is approximately 504,000, while the metropolitan area has around 2.9 million inhabitants.
+
+Q: What language do they speak there?
+A: The official language of Portugal is Portuguese.
+
+Q: What's the weather like in summer?
+A: In summer, Lisbon typically experiences warm to hot weather, with average temperatures ranging from 25°C to 30°C. It is usually sunny with very little rainfall.
+
+=== Conversation State ===
+  Total messages in context: 8
+  (Proactive compression keeps context manageable across long conversations)
+```
+
+> Demonstrates proactive context compression (new in v1.40.0) — automatically summarizes older messages when token usage approaches the threshold, keeping conversations within context limits.

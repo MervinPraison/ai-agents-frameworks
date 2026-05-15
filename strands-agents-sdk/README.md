@@ -68,6 +68,7 @@ uv run python 14_a2a_agent.py
 uv run python 15_mcp_tools.py
 uv run python 16_skills_plugin.py
 uv run python 17_session_persistence.py
+uv run python 18_context_compression.py
 ```
 
 ## Examples
@@ -92,6 +93,7 @@ uv run python 17_session_persistence.py
 | 15 | `15_mcp_tools.py` | Model Context Protocol (MCP) tool integration |
 | 16 | `16_skills_plugin.py` | AgentSkills plugin with programmatic Skill creation |
 | 17 | `17_session_persistence.py` | FileSessionManager for state and conversation persistence |
+| 18 | `18_context_compression.py` | Proactive context compression with SummarizingConversationManager |
 
 ## Key dependencies
 
