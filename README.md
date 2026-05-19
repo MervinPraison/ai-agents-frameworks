@@ -131,7 +131,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
             <img src="res/claude-logo.svg" alt="Claude Agent SDK" width="30" style="vertical-align: middle;">
           </picture>
       <strong style="vertical-align: middle; font-size: 1.2em;">Claude Agent SDK</strong>
-      <td><code>0.1.52</code></td>
+      <td><code>0.1.80</code></td>
       <td>
           <a href="https://platform.claude.com/docs/en/agent-sdk/overview">
             <picture>
@@ -188,7 +188,7 @@ This repository provides a comprehensive, hands-on comparison of modern AI agent
         </picture>
     <strong style="vertical-align: middle; font-size: 1.2em;">Google ADK</strong>
       </td>
-      <td><code>1.31.0</code></td>
+      <td><code>1.33.0</code></td>
       <td>
           <a href="https://google.github.io/adk-docs/">
             <picture>
