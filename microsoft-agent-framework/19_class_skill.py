@@ -3,7 +3,7 @@ import json
 
 from dotenv import load_dotenv
 
-from agent_framework import Agent, ClassSkill, SkillsProvider
+from agent_framework import Agent, ClassSkill, SkillFrontmatter, SkillsProvider
 from agent_framework.openai import OpenAIChatClient
 
 from settings import settings
@@ -36,8 +36,10 @@ class UnitConverterSkill(ClassSkill):
 
     def __init__(self) -> None:
         super().__init__(
-            name="unit-converter",
-            description="Convert between common measurement units.",
+            frontmatter=SkillFrontmatter(
+                name="unit-converter",
+                description="Convert between common measurement units.",
+            )
         )
 
     @property
@@ -74,8 +76,16 @@ async def main() -> None:
         api_key=settings.OPENAI_API_KEY.get_secret_value(),
     )
 
+    # Since v1.10.0 every SkillsProvider tool registers with
+    # approval_mode="always_require": without these opt-outs the run returns
+    # approval requests in result.user_input_requests instead of an answer.
     skill = UnitConverterSkill()
-    skills_provider = SkillsProvider(source=skill)
+    skills_provider = SkillsProvider(
+        source=skill,
+        disable_load_skill_approval=True,
+        disable_read_skill_resource_approval=True,
+        disable_run_skill_script_approval=True,
+    )
 
     agent = Agent(
         client=client,
@@ -97,8 +107,8 @@ async def main() -> None:
     print(f"Answer: {result.text}")
 
     # --- 4. Show skill metadata ---
-    print(f"\nSkill name: {skill.name}")
-    print(f"Skill description: {skill.description}")
+    print(f"\nSkill name: {skill.frontmatter.name}")
+    print(f"Skill description: {skill.frontmatter.description}")
     print(f"Resources: {[r.name for r in skill.resources]}")
     print(f"Scripts: {[s.name for s in skill.scripts]}")
 
